@@ -1,0 +1,29 @@
+{
+    "name": "ultra/chars",
+    "type": "library",
+    "description": "This package is a part of the Ultra library.",
+    "license": "MIT",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/dlsrc/ultra-chars"
+        }
+    ],
+    "authors": [
+        {
+            "name": "Dmitry Lebedev",
+            "email": "dl@adios.ru",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4" : {
+            "Ultra\\Chars\\" : "src/"
+        }
+    },
+    "require": {
+        "php": ">=8.3",
+        "ultra/enum-cases": "^1.0.0",
+        "ultra/result": "^1.0.0"
+    }
+}
