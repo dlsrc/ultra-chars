@@ -2,7 +2,7 @@
     "name": "ultra/chars",
     "version": "1.0.0",
     "type": "library",
-    "description": "This package is a part of the Ultra library.",
+    "description": "Character and numeric sequences. Masking string data with numeric sequences. Elementary transliteration.",
     "license": "MIT",
     "repositories": [
         {
