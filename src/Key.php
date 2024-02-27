@@ -8,12 +8,12 @@ namespace Ultra\Chars;
 
 use Random\Randomizer;
 use Ultra\Enum\Cases;
-use Ultra\Result\Fail;
-use Ultra\Result\State;
-use Ultra\Result\Status;
-use Ultra\Result\Success;
+use Ultra\Fail;
+use Ultra\State;
+use Ultra\Status;
+use Ultra\Result;
 
-enum Set: string {
+enum Key: string {
 	use Cases;
 
 	case BIG = '!QA,Z1q.az@WS<X2w>sx#ED:C3e;dc$RF{V4r}fv%TG[B5t]gb^YH-N6y=hn&UJ_M7u+jm*IK8i?k(OL9ol)P0p|/\\';
@@ -49,7 +49,7 @@ enum Set: string {
 		$exclude  = (string) ($args[3] ?? '');
 		$nodigits =   (bool) ($args[4] ?? false);
 
-		return $case->gen($length, $count, $divisor, $exclude, $nodigits);
+		return new Result($case->gen($length, $count, $divisor, $exclude, $nodigits));
 	}
 
 	public function gen(
@@ -58,7 +58,7 @@ enum Set: string {
 		string $divisor  = '-',
 		string $exclude  = '',
 		bool   $nodigits = false
-	): State {
+	): string {
 		if ($length < 1) {
 			$length = 1;
 		}
@@ -102,7 +102,7 @@ enum Set: string {
 			}
 		}
 
-		return new Success(implode($divisor, $substr));
+		return implode($divisor, $substr);
 	}
 
 	public static function code2dec(string $string, string $salt = ''): string {
@@ -174,7 +174,7 @@ enum Set: string {
 
 	public static function hideID(string $string, int $deep = 5, string $salt = ''): string {
 		$code = '';
-		$key = Set::BIG;
+		$key = Key::BIG;
 		$len = mb_strlen($string);
 
 		if ($deep < 1) {
@@ -195,11 +195,11 @@ enum Set: string {
 
 		$code =	$key->gen(1, 1,'','', true)->unwrap().$code.$id.$key->gen(1, 1,'','', true)->unwrap().$len;
 
-		return Set::code2dec($code, $salt);
+		return Key::code2dec($code, $salt);
 	}
 
 	public static function findID(string $token, string $salt = ''): State {
-		$token = Set::dec2code($token, $salt);
+		$token = Key::dec2code($token, $salt);
 		
 		if (0 == preg_match('/^\D(.+)\D(\d+)$/s', $token, $match)) {
 			return new Fail(
@@ -223,6 +223,6 @@ enum Set: string {
 			);
 		}
 
-		return new Success($token[$id]);
+		return new Result($token[$id]);
 	}
 }

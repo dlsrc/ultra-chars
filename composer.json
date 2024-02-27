@@ -1,5 +1,6 @@
 {
     "name": "ultra/chars",
+    "version": "1.0.0",
     "type": "library",
     "description": "This package is a part of the Ultra library.",
     "license": "MIT",
