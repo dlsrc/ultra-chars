@@ -174,7 +174,7 @@ enum Key: string {
 
 	public static function hideID(string $string, int $deep = 5, string $salt = ''): string {
 		$code = '';
-		$key = Key::BIG;
+		$key = self::BIG;
 		$len = mb_strlen($string);
 
 		if ($deep < 1) {
@@ -189,11 +189,11 @@ enum Key: string {
 				$code.= $string;
 			}
 			else {
-				$code.= $key->gen($len, 1,'','', true)->unwrap();
+				$code.= $key->gen($len, 1,'','', true);
 			}
 		}
 
-		$code =	$key->gen(1, 1,'','', true)->unwrap().$code.$id.$key->gen(1, 1,'','', true)->unwrap().$len;
+		$code =	$key->gen(1, 1,'','', true).$code.$id.$key->gen(1, 1,'','', true).$len;
 
 		return Key::code2dec($code, $salt);
 	}
