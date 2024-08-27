@@ -184,7 +184,7 @@ enum Key: string {
 			$deep = 9;
 		}
 
-		for ($id = (new Randomizer())->getInt(0, $deep), $i = 0; $i < ($deep + 1); $i++) {
+		for ($id = new Randomizer()->getInt(0, $deep), $i = 0; $i < ($deep + 1); $i++) {
 			if ($id == $i) {
 				$code.= $string;
 			}
