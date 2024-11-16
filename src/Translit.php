@@ -8,7 +8,7 @@ namespace Ultra\Chars;
 
 abstract class Translit {
 	public static function ru2en(string $str, Transform $caps = Transform::Small): string {
-		$str = \str_replace(
+		$str = str_replace(
 			[
 				'эко', 'ЭКО', 'Эко',
 				'экс', 'ЭКС', 'Экс', 'кс', 'КС', 'Кс',
@@ -46,7 +46,7 @@ abstract class Translit {
 	}
 
 	public static function eu2en(string $str, Transform $caps = Transform::Small): string {
-		$str = \str_replace(
+		$str = str_replace(
 			[
 				'Á','á','Ć','ć','É','é','Í','í','Ĺ','ĺ','Ń','ń','Ó','ó','Ŕ','ŕ','Ś','ś','Ú','ú','Ẃ','ẃ','Ý','ý','Ź','ź',
 				'Â','â','Ĉ','ĉ','Ê','ê','Ĝ','ĝ','Ĥ','ĥ','Î','î','Ĵ','ĵ','Ô','ô','Ŝ','ŝ','Û','û',
