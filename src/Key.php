@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 /**
- * (c) 2005-2024 Dmitry Lebedev <dl@adios.ru>
+ * (c) 2005-2025 Dmitry Lebedev <dl@adios.ru>
  * This source code is part of the Ultra library.
  * Please see the LICENSE file for copyright and licensing information.
  */
@@ -184,7 +184,7 @@ enum Key: string {
 			$deep = 9;
 		}
 
-		for ($id = (new Randomizer())->getInt(0, $deep), $i = 0; $i < ($deep + 1); $i++) {
+		for ($id = new Randomizer()->getInt(0, $deep), $i = 0; $i < ($deep + 1); $i++) {
 			if ($id == $i) {
 				$code.= $string;
 			}
