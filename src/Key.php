@@ -152,6 +152,7 @@ enum Key: string {
 	public static function splitConvert(string $salt): array {
 		$conv = '          '.self::BIG->value;
 		$split = array_unique(str_split($salt));
+		$erase = [];
 
 		foreach (array_keys($split) as $id) {
 			if (str_contains($conv, $split[$id])) {
